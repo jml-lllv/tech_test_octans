@@ -4,3 +4,4 @@
 !Dockerfile
 /entrega/*
 !entrega/BDOctans.sql
+/.metadata/
