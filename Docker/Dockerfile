@@ -1,1 +1,1 @@
-FROM mysql:5.7
+FROM jamurillo24/bdoctans:v1

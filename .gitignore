@@ -1,3 +1,6 @@
 /.metadata/*
-Docker/schemas/*
-#!Docker/schemas/primefacesBD/
+/Docker/*
+!docker-compose.yml
+!Dockerfile
+/entrega/*
+!entrega/BDOctans.sql
