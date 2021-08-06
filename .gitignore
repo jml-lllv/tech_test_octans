@@ -1,7 +1,9 @@
 /.metadata/*
-/Docker/*
+/back/Docker/*
 !docker-compose.yml
 !Dockerfile
-/entrega/*
+/back/entrega/*
+/back/bd/*
 !entrega/BDOctans.sql
 /.metadata/
+/RemoteSystemsTempFiles/*
