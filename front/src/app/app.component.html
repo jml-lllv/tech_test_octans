@@ -1,0 +1,69 @@
+<div class="formularioRegistro">
+  <h2>Crear Usuario</h2>
+  <form [formGroup]="usuarioForm" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Rol</label>
+      <select name="rol" id="rol" formControlName="rol" class="form-control">
+        <option [ngValue]="item" *ngFor="let item of roles">{{item.nombre}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Estado</label>
+      <div class="form-check">
+        <input class="form-check-input" formControlName="activo" type="radio" name="activo" value="1" id="activo">
+        <label class="form-check-label" for="activo">
+          Activo
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" formControlName="activo" type="radio" name="activo" value="0" id="inactivo">
+        <label class="form-check-label" for="inactivo">
+        Inactivo
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Guardar</button>
+
+  </form>
+</div>
+
+<div class="formularioRegistro">
+<h2>Usuarios Registrados</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Rol</th>
+        <th>Estado</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of usuarios">
+        <th>{{item.nombre}}</th>
+        <td>{{item.rol.nombre}}</td>
+        <td>{{item.estado}}</td>
+        <td>
+          <button type="button" class="btn btn-success">Editar</button>
+          <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<router-outlet></router-outlet>

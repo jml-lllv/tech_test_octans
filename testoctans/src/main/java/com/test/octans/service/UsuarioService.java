@@ -137,7 +137,7 @@ public class UsuarioService implements UsuarioRepository{
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		
+		this.usuarioRepository.deleteById(id);
 	}
 
 	@Override

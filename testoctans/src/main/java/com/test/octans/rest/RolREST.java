@@ -11,7 +11,7 @@ import com.test.octans.service.RolService;
 import com.test.octans.model.RolModel;
 
 @RestController
-@RequestMapping("/rol/")
+@RequestMapping("/roles/")
 public class RolREST {
 
 	@Autowired
