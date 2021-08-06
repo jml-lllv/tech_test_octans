@@ -12,11 +12,11 @@ export class UsuariosService {
   constructor(private httpClient: HttpClient) { }
 
   public getAllUsuarios(): Observable<any> {
-    return this.httpClient.get(this.API_SERVER);
+    return this.httpClient.get(this.API_SERVER + "consultar");
   }
 
   public saveUsuario(usuario: any): Observable<any>{
-    return this.httpClient.post(this.API_SERVER,usuario);
+    return this.httpClient.post(this.API_SERVER + "guardar",usuario);
   }
 
   public deleteUsuario(id): Observable<any>{

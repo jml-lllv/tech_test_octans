@@ -22,12 +22,12 @@ public class UsuarioREST {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@GetMapping
+	@GetMapping("consultar")
 	private ResponseEntity<List<UsuarioModel>> getAllUsuarios(){
 		return ResponseEntity.ok(usuarioService.findAll());
 	}
 	
-	@PostMapping
+	@PostMapping("guardar")
 	private ResponseEntity<UsuarioModel> saveUsuario(@RequestBody UsuarioModel usuario){
 		
 		try {
@@ -40,7 +40,7 @@ public class UsuarioREST {
 		
 	}
 	
-	@DeleteMapping (value = "delete/{id}")
+	@DeleteMapping(value = "delete/{id}")
 	private ResponseEntity<Boolean> deleteUsuario(@PathVariable("id") Long id){
 		Boolean resp = false;
 		usuarioService.deleteById(id);

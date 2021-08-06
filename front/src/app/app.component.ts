@@ -16,6 +16,9 @@ export class AppComponent implements OnInit {
   activo: any;
   usuarios: any;
   title: "usuario front";
+  titlepop: any;
+  btn: any;
+  display = 'none';
 
   constructor(
     public fb: FormBuilder,
@@ -28,6 +31,7 @@ export class AppComponent implements OnInit {
 
     /*valido el formulario*/
     this.usuarioForm = this.fb.group({
+      id_usuario: [''],
       nombre: ['', Validators.required],
       rol: ['', Validators.required],
       activo: ['', Validators.required],
@@ -43,7 +47,10 @@ export class AppComponent implements OnInit {
     this.usuariosService.getAllUsuarios().subscribe(resp => {
       this.usuarios = resp;
     },
-      error => { console.error(error) }
+      error => {
+        console.error(error);
+        window.location.reload();
+      }
     );
   }
     /*Funcion para guardar los datos con el metodo del services usuarios*/
@@ -51,9 +58,12 @@ export class AppComponent implements OnInit {
       this.usuariosService.saveUsuario(this.usuarioForm.value).subscribe(resp => {
         alert("Registro Creado Correctamente");
         this.usuarioForm.reset();
+        this.usuarios = this.usuarios.filter(usuarios => resp.id_usuario != resp.id_usuario);
         this.usuarios.push(resp);
     },
-      error => { console.error(error) }
+        error => {
+          console.error(error);
+        }
     )
     }
   /*funcion para eliminar los datos con el metodo del services usuarios*/
@@ -65,5 +75,33 @@ export class AppComponent implements OnInit {
       }
     },
       error => { console.error(error) })
+  }
+
+  editar(usuario) {
+    this.usuarioForm.setValue({
+      id_usuario: usuario.id_usuario, 
+      nombre: usuario.nombre,
+      rol: usuario.rol,
+      activo: usuario.activo,
+    })
+  }
+
+  openPop(accion) {
+
+    if (accion != 0) {
+      this.editar(accion);
+      this.titlepop = "Editar el usuario";
+      this.btn = "Editar";
+    } else {
+      this.titlepop = "Crear usuario";
+      this.usuarioForm.reset();
+      this.btn = "Guardar";
     }
+    this.display = 'block';
+  }
+
+  closePop() {
+    this.display = 'none';
+  }
+  
 }
