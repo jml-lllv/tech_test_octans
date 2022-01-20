@@ -10,181 +10,145 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.test.octans.model.RolModel;
+import com.test.octans.dto.RolDto;
 import com.test.octans.repository.RolRepository;
 
 @Service
-public class RolService implements RolRepository{
-	
+public class RolService implements RolRepository {
+
 	@Autowired
 	private RolRepository rolRepository;
 
 	@Override
-	public List<RolModel> findAll() {
-		// TODO Auto-generated method stub
+	public List<RolDto> findAll() {
 		return rolRepository.findAll();
 	}
 
 	@Override
-	public List<RolModel> findAll(Sort sort) {
-		// TODO Auto-generated method stub
+	public List<RolDto> findAll(Sort sort) {
 		return rolRepository.findAll(sort);
 	}
 
 	@Override
-	public List<RolModel> findAllById(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
+	public List<RolDto> findAllById(Iterable<Long> ids) {
 		return rolRepository.findAllById(ids);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> List<S> saveAll(Iterable<S> entities) {
 		return rolRepository.saveAll(entities);
 	}
 
 	@Override
 	public void flush() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public <S extends RolModel> S saveAndFlush(S entity) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> S saveAndFlush(S entity) {
 		return rolRepository.saveAndFlush(entity);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> saveAllAndFlush(Iterable<S> entities) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> List<S> saveAllAndFlush(Iterable<S> entities) {
 		return rolRepository.saveAllAndFlush(entities);
 	}
 
 	@Override
-	public void deleteAllInBatch(Iterable<RolModel> entities) {
-		// TODO Auto-generated method stub
-		
+	public void deleteAllInBatch(Iterable<RolDto> entities) {
 	}
 
 	@Override
 	public void deleteAllByIdInBatch(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void deleteAllInBatch() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public RolModel getOne(Long id) {
-		// TODO Auto-generated method stub
+	public RolDto getOne(Long id) {
 		return rolRepository.getOne(id);
 	}
 
 	@Override
-	public RolModel getById(Long id) {
-		// TODO Auto-generated method stub
+	public RolDto getById(Long id) {
 		return rolRepository.getById(id);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> findAll(Example<S> example) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> List<S> findAll(Example<S> example) {
 		return rolRepository.findAll(example);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> findAll(Example<S> example, Sort sort) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> List<S> findAll(Example<S> example, Sort sort) {
 		return rolRepository.findAll(example, sort);
 	}
 
 	@Override
-	public Page<RolModel> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
+	public Page<RolDto> findAll(Pageable pageable) {
 		return rolRepository.findAll(pageable);
 	}
 
 	@Override
-	public <S extends RolModel> S save(S entity) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> S save(S entity) {
 		return rolRepository.save(entity);
 	}
 
 	@Override
-	public Optional<RolModel> findById(Long id) {
-		// TODO Auto-generated method stub
+	public Optional<RolDto> findById(Long id) {
 		return rolRepository.findById(id);
 	}
 
 	@Override
 	public boolean existsById(Long id) {
-		// TODO Auto-generated method stub
 		return rolRepository.existsById(id);
 	}
 
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
 		return rolRepository.count();
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void delete(RolModel entity) {
-		// TODO Auto-generated method stub
-		
+	public void delete(RolDto entity) {
 	}
 
 	@Override
 	public void deleteAllById(Iterable<? extends Long> ids) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends RolModel> entities) {
-		// TODO Auto-generated method stub
-		
+	public void deleteAll(Iterable<? extends RolDto> entities) {
 	}
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public <S extends RolModel> Optional<S> findOne(Example<S> example) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> Optional<S> findOne(Example<S> example) {
 		return rolRepository.findOne(example);
 	}
 
 	@Override
-	public <S extends RolModel> Page<S> findAll(Example<S> example, Pageable pageable) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> Page<S> findAll(Example<S> example, Pageable pageable) {
 		return rolRepository.findAll(example, pageable);
 	}
 
 	@Override
-	public <S extends RolModel> long count(Example<S> example) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> long count(Example<S> example) {
 		return rolRepository.count(example);
 	}
 
 	@Override
-	public <S extends RolModel> boolean exists(Example<S> example) {
-		// TODO Auto-generated method stub
+	public <S extends RolDto> boolean exists(Example<S> example) {
 		return rolRepository.exists(example);
 	}
 }

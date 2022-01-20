@@ -1,4 +1,4 @@
-package com.test.octans.rest;
+package com.test.octans.controller;
 
 import java.util.List;
 
@@ -7,18 +7,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.test.octans.dto.RolDto;
 import com.test.octans.service.RolService;
-import com.test.octans.model.RolModel;
 
 @RestController
 @RequestMapping("/roles/")
-public class RolREST {
+public class RolController {
 
 	@Autowired
 	private RolService rolService;
 	
 	@GetMapping
-	private ResponseEntity<List<RolModel>> getAllRoles(){
+	public ResponseEntity<List<RolDto>> getAllRoles(){
 		return ResponseEntity.ok(rolService.findAll());
 	}
 }
