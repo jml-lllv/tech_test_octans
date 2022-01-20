@@ -2,8 +2,8 @@ package com.test.octans.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.test.octans.dto.RolDto;
+import com.test.octans.model.RolModel;
 
-public interface RolRepository extends JpaRepository<RolDto, Long>{
+public interface RolRepository extends JpaRepository<RolModel, Long>{
 
 }

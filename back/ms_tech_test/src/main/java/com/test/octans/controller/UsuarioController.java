@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientResponseException;
 
 import com.test.octans.dto.UsuarioDto;
+import com.test.octans.model.UsuarioModel;
 import com.test.octans.service.UsuarioService;
 
 @RestController
@@ -27,16 +28,19 @@ public class UsuarioController {
 
 	@GetMapping("consultar")
 	@CrossOrigin
-	public ResponseEntity<List<UsuarioDto>> getAllUsuarios() {
+	public ResponseEntity<List<UsuarioModel>> getAllUsuarios() {
 		return ResponseEntity.ok(usuarioService.findAll());
 	}
 
 	@PostMapping("guardar")
 	@CrossOrigin
-	public ResponseEntity<UsuarioDto> saveUsuario(@RequestBody UsuarioDto usuario) {
+	public ResponseEntity<UsuarioModel> saveUsuario(@RequestBody UsuarioDto usuario) {
 
 		try {
-			return new ResponseEntity<>(usuarioService.save(usuario), HttpStatus.OK);
+			
+			UsuarioModel usuarioModel = new UsuarioModel(usuario);
+			
+			return new ResponseEntity<>(usuarioService.save(usuarioModel), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
