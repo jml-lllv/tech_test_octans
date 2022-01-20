@@ -79,7 +79,7 @@ export class AppComponent implements OnInit {
 
   editar(usuario) {
     this.usuarioForm.setValue({
-      id_usuario: usuario.id_usuario, 
+      id_usuario: usuario.idUsuario, 
       nombre: usuario.nombre,
       rol: usuario.rol,
       activo: usuario.activo,
