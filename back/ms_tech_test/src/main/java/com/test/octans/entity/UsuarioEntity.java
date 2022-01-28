@@ -1,34 +1,33 @@
-package com.test.octans.model;
+package com.test.octans.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.test.octans.dto.RolDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Rol")
+@Table(name = "Usuario")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class RolModel {
-	
+@NoArgsConstructor
+public class UsuarioEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idRol;
+	private Long idUsuario;
+
+	@ManyToOne
+	@JoinColumn(name = "id_rol")
+	private RolEntity rol;
 
 	private String nombre;
-	
 
-	public RolModel(RolDto rol) {
-		super();
-		this.idRol = rol.getIdRol();
-		this.nombre = rol.getNombre();
-	}	
+	private String activo;
 }

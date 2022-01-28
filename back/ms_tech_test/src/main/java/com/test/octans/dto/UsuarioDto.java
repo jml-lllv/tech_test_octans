@@ -1,6 +1,6 @@
 package com.test.octans.dto;
 
-import com.test.octans.model.RolModel;
+import com.test.octans.entity.RolEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ public class UsuarioDto {
 	
 	private Long idUsuario;
 	
-	private RolModel rol;
+	private RolEntity rol;
 
 	private String nombre;
 

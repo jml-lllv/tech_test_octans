@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientResponseException;
 
 import com.test.octans.dto.RolDto;
-import com.test.octans.model.RolModel;
+import com.test.octans.entity.RolEntity;
+import com.test.octans.mapper.RolMapper;
 import com.test.octans.service.RolService;
 
 @RestController
@@ -23,21 +24,23 @@ public class RolController {
 
 	@Autowired
 	private RolService rolService;
+	
+	private RolMapper rolMapper;
 
 	@GetMapping("consultar")
 	@CrossOrigin
-	public ResponseEntity<List<RolModel>> getAllRoles() {
+	public ResponseEntity<List<RolEntity>> getAllRoles() {
 		return ResponseEntity.ok(rolService.findAll());
 	}
 
 	@PostMapping("guardar")
 	@CrossOrigin
-	public ResponseEntity<RolModel> saveUsuario(@RequestBody RolDto rol) {
+	public ResponseEntity<RolEntity> saveUsuario(@RequestBody RolDto rol) {
 		try {
 			
-			RolModel rolModel = new RolModel(rol);
+			RolEntity rolEntity = rolMapper.toRolEntity(rol);
 			
-			return new ResponseEntity<>(rolService.save(rolModel), HttpStatus.OK);
+			return new ResponseEntity<>(rolService.save(rolEntity), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}

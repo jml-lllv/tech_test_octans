@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientResponseException;
 
 import com.test.octans.dto.UsuarioDto;
-import com.test.octans.model.UsuarioModel;
+import com.test.octans.entity.UsuarioEntity;
+import com.test.octans.mapper.UsuarioMapper;
 import com.test.octans.service.UsuarioService;
 
 @RestController
@@ -25,22 +26,24 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	private UsuarioMapper usuarioMapper;
 
 	@GetMapping("consultar")
 	@CrossOrigin
-	public ResponseEntity<List<UsuarioModel>> getAllUsuarios() {
+	public ResponseEntity<List<UsuarioEntity>> getAllUsuarios() {
 		return ResponseEntity.ok(usuarioService.findAll());
 	}
 
 	@PostMapping("guardar")
 	@CrossOrigin
-	public ResponseEntity<UsuarioModel> saveUsuario(@RequestBody UsuarioDto usuario) {
+	public ResponseEntity<UsuarioEntity> saveUsuario(@RequestBody UsuarioDto usuario) {
 
 		try {
 			
-			UsuarioModel usuarioModel = new UsuarioModel(usuario);
+			UsuarioEntity usuarioEntity = usuarioMapper.toUsuarioEntity(usuario);
 			
-			return new ResponseEntity<>(usuarioService.save(usuarioModel), HttpStatus.OK);
+			return new ResponseEntity<>(usuarioService.save(usuarioEntity), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}

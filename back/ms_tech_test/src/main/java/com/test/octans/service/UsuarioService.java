@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.test.octans.model.UsuarioModel;
+import com.test.octans.entity.UsuarioEntity;
 import com.test.octans.repository.UsuarioRepository;
 
 @Service
@@ -20,23 +20,23 @@ public class UsuarioService implements UsuarioRepository {
 	private UsuarioRepository usuarioRepository;
 
 	@Override
-	public List<UsuarioModel> findAll() {
+	public List<UsuarioEntity> findAll() {
 		return usuarioRepository.findAll();
 	}
 
 	@Override
-	public List<UsuarioModel> findAll(Sort sort) {
+	public List<UsuarioEntity> findAll(Sort sort) {
 		return usuarioRepository.findAll(sort);
 	}
 
 	@Override
-	public List<UsuarioModel> findAllById(Iterable<Long> ids) {
+	public List<UsuarioEntity> findAllById(Iterable<Long> ids) {
 
 		return usuarioRepository.findAllById(ids);
 	}
 
 	@Override
-	public <S extends UsuarioModel> List<S> saveAll(Iterable<S> entities) {
+	public <S extends UsuarioEntity> List<S> saveAll(Iterable<S> entities) {
 
 		return usuarioRepository.saveAll(entities);
 	}
@@ -47,19 +47,19 @@ public class UsuarioService implements UsuarioRepository {
 	}
 
 	@Override
-	public <S extends UsuarioModel> S saveAndFlush(S entity) {
+	public <S extends UsuarioEntity> S saveAndFlush(S entity) {
 
 		return usuarioRepository.saveAndFlush(entity);
 	}
 
 	@Override
-	public <S extends UsuarioModel> List<S> saveAllAndFlush(Iterable<S> entities) {
+	public <S extends UsuarioEntity> List<S> saveAllAndFlush(Iterable<S> entities) {
 
 		return usuarioRepository.saveAllAndFlush(entities);
 	}
 
 	@Override
-	public void deleteAllInBatch(Iterable<UsuarioModel> entities) {
+	public void deleteAllInBatch(Iterable<UsuarioEntity> entities) {
 
 	}
 
@@ -75,43 +75,43 @@ public class UsuarioService implements UsuarioRepository {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public UsuarioModel getOne(Long id) {
+	public UsuarioEntity getOne(Long id) {
 
 		return usuarioRepository.getOne(id);
 	}
 
 	@Override
-	public UsuarioModel getById(Long id) {
+	public UsuarioEntity getById(Long id) {
 
 		return usuarioRepository.getById(id);
 	}
 
 	@Override
-	public <S extends UsuarioModel> List<S> findAll(Example<S> example) {
+	public <S extends UsuarioEntity> List<S> findAll(Example<S> example) {
 
 		return usuarioRepository.findAll(example);
 	}
 
 	@Override
-	public <S extends UsuarioModel> List<S> findAll(Example<S> example, Sort sort) {
+	public <S extends UsuarioEntity> List<S> findAll(Example<S> example, Sort sort) {
 
 		return usuarioRepository.findAll(example, sort);
 	}
 
 	@Override
-	public Page<UsuarioModel> findAll(Pageable pageable) {
+	public Page<UsuarioEntity> findAll(Pageable pageable) {
 
 		return usuarioRepository.findAll(pageable);
 	}
 
 	@Override
-	public <S extends UsuarioModel> S save(S entity) {
+	public <S extends UsuarioEntity> S save(S entity) {
 
 		return usuarioRepository.saveAndFlush(entity);
 	}
 
 	@Override
-	public Optional<UsuarioModel> findById(Long id) {
+	public Optional<UsuarioEntity> findById(Long id) {
 
 		return usuarioRepository.findById(id);
 	}
@@ -135,7 +135,7 @@ public class UsuarioService implements UsuarioRepository {
 	}
 
 	@Override
-	public void delete(UsuarioModel entity) {
+	public void delete(UsuarioEntity entity) {
 
 	}
 
@@ -145,7 +145,7 @@ public class UsuarioService implements UsuarioRepository {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends UsuarioModel> entities) {
+	public void deleteAll(Iterable<? extends UsuarioEntity> entities) {
 
 	}
 
@@ -154,22 +154,22 @@ public class UsuarioService implements UsuarioRepository {
 	}
 
 	@Override
-	public <S extends UsuarioModel> Optional<S> findOne(Example<S> example) {
+	public <S extends UsuarioEntity> Optional<S> findOne(Example<S> example) {
 		return usuarioRepository.findOne(example);
 	}
 
 	@Override
-	public <S extends UsuarioModel> Page<S> findAll(Example<S> example, Pageable pageable) {
+	public <S extends UsuarioEntity> Page<S> findAll(Example<S> example, Pageable pageable) {
 		return usuarioRepository.findAll(example, pageable);
 	}
 
 	@Override
-	public <S extends UsuarioModel> long count(Example<S> example) {
+	public <S extends UsuarioEntity> long count(Example<S> example) {
 		return usuarioRepository.count(example);
 	}
 
 	@Override
-	public <S extends UsuarioModel> boolean exists(Example<S> example) {
+	public <S extends UsuarioEntity> boolean exists(Example<S> example) {
 		return usuarioRepository.exists(example);
 	}
 

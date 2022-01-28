@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.test.octans.model.RolModel;
+import com.test.octans.entity.RolEntity;
 import com.test.octans.repository.RolRepository;
 
 @Service
@@ -20,22 +20,22 @@ public class RolService implements RolRepository {
 	private RolRepository rolRepository;
 
 	@Override
-	public List<RolModel> findAll() {
+	public List<RolEntity> findAll() {
 		return rolRepository.findAll();
 	}
 
 	@Override
-	public List<RolModel> findAll(Sort sort) {
+	public List<RolEntity> findAll(Sort sort) {
 		return rolRepository.findAll(sort);
 	}
 
 	@Override
-	public List<RolModel> findAllById(Iterable<Long> ids) {
+	public List<RolEntity> findAllById(Iterable<Long> ids) {
 		return rolRepository.findAllById(ids);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> saveAll(Iterable<S> entities) {
+	public <S extends RolEntity> List<S> saveAll(Iterable<S> entities) {
 		return rolRepository.saveAll(entities);
 	}
 
@@ -45,17 +45,17 @@ public class RolService implements RolRepository {
 	}
 
 	@Override
-	public <S extends RolModel> S saveAndFlush(S entity) {
+	public <S extends RolEntity> S saveAndFlush(S entity) {
 		return rolRepository.saveAndFlush(entity);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> saveAllAndFlush(Iterable<S> entities) {
+	public <S extends RolEntity> List<S> saveAllAndFlush(Iterable<S> entities) {
 		return rolRepository.saveAllAndFlush(entities);
 	}
 
 	@Override
-	public void deleteAllInBatch(Iterable<RolModel> entities) {
+	public void deleteAllInBatch(Iterable<RolEntity> entities) {
 	}
 
 	@Override
@@ -68,37 +68,37 @@ public class RolService implements RolRepository {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public RolModel getOne(Long id) {
+	public RolEntity getOne(Long id) {
 		return rolRepository.getOne(id);
 	}
 
 	@Override
-	public RolModel getById(Long id) {
+	public RolEntity getById(Long id) {
 		return rolRepository.getById(id);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> findAll(Example<S> example) {
+	public <S extends RolEntity> List<S> findAll(Example<S> example) {
 		return rolRepository.findAll(example);
 	}
 
 	@Override
-	public <S extends RolModel> List<S> findAll(Example<S> example, Sort sort) {
+	public <S extends RolEntity> List<S> findAll(Example<S> example, Sort sort) {
 		return rolRepository.findAll(example, sort);
 	}
 
 	@Override
-	public Page<RolModel> findAll(Pageable pageable) {
+	public Page<RolEntity> findAll(Pageable pageable) {
 		return rolRepository.findAll(pageable);
 	}
 
 	@Override
-	public <S extends RolModel> S save(S entity) {
+	public <S extends RolEntity> S save(S entity) {
 		return rolRepository.save(entity);
 	}
 
 	@Override
-	public Optional<RolModel> findById(Long id) {
+	public Optional<RolEntity> findById(Long id) {
 		return rolRepository.findById(id);
 	}
 
@@ -117,7 +117,7 @@ public class RolService implements RolRepository {
 	}
 
 	@Override
-	public void delete(RolModel entity) {
+	public void delete(RolEntity entity) {
 	}
 
 	@Override
@@ -125,7 +125,7 @@ public class RolService implements RolRepository {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends RolModel> entities) {
+	public void deleteAll(Iterable<? extends RolEntity> entities) {
 	}
 
 	@Override
@@ -133,22 +133,22 @@ public class RolService implements RolRepository {
 	}
 
 	@Override
-	public <S extends RolModel> Optional<S> findOne(Example<S> example) {
+	public <S extends RolEntity> Optional<S> findOne(Example<S> example) {
 		return rolRepository.findOne(example);
 	}
 
 	@Override
-	public <S extends RolModel> Page<S> findAll(Example<S> example, Pageable pageable) {
+	public <S extends RolEntity> Page<S> findAll(Example<S> example, Pageable pageable) {
 		return rolRepository.findAll(example, pageable);
 	}
 
 	@Override
-	public <S extends RolModel> long count(Example<S> example) {
+	public <S extends RolEntity> long count(Example<S> example) {
 		return rolRepository.count(example);
 	}
 
 	@Override
-	public <S extends RolModel> boolean exists(Example<S> example) {
+	public <S extends RolEntity> boolean exists(Example<S> example) {
 		return rolRepository.exists(example);
 	}
 }
