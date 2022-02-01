@@ -2,9 +2,12 @@ package com.test.octans;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-public class TestoctansApplication {
+@EnableJpaRepositories("com.test.octans.persistence")
+public class TestoctansApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestoctansApplication.class, args);

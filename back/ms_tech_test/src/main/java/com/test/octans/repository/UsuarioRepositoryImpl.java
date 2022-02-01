@@ -3,10 +3,12 @@ package com.test.octans.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.test.octans.entity.UsuarioEntity;
 import com.test.octans.persistence.UsuarioPersistenceRepository;
 
+@Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
 	@Autowired
