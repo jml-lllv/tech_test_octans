@@ -1,9 +1,17 @@
 package com.test.octans.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.test.octans.entity.UsuarioEntity;
 
-public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long>{
+@Repository
+public interface UsuarioRepository {
 
+	List<UsuarioEntity> findAll();
+
+	<S extends UsuarioEntity> S save(S entity);
+
+	void deleteById(Long id);
 }

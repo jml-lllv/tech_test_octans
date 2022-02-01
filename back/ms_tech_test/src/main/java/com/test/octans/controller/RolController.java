@@ -25,12 +25,17 @@ public class RolController {
 	@Autowired
 	private RolService rolService;
 	
+	@Autowired
 	private RolMapper rolMapper;
 
 	@GetMapping("consultar")
 	@CrossOrigin
 	public ResponseEntity<List<RolEntity>> getAllRoles() {
-		return ResponseEntity.ok(rolService.findAll());
+		try {
+			return ResponseEntity.ok(rolService.findAll());
+		} catch (RestClientResponseException e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
 	}
 
 	@PostMapping("guardar")
@@ -44,6 +49,5 @@ public class RolController {
 		} catch (RestClientResponseException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
-
 	}
 }

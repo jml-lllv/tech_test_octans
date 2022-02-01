@@ -27,36 +27,42 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@Autowired
 	private UsuarioMapper usuarioMapper;
 
 	@GetMapping("consultar")
 	@CrossOrigin
 	public ResponseEntity<List<UsuarioEntity>> getAllUsuarios() {
-		return ResponseEntity.ok(usuarioService.findAll());
+		try {
+			return ResponseEntity.ok(usuarioService.findAll());
+		} catch (RestClientResponseException e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
 	}
 
 	@PostMapping("guardar")
 	@CrossOrigin
 	public ResponseEntity<UsuarioEntity> saveUsuario(@RequestBody UsuarioDto usuario) {
-
 		try {
-			
 			UsuarioEntity usuarioEntity = usuarioMapper.toUsuarioEntity(usuario);
-			
 			return new ResponseEntity<>(usuarioService.save(usuarioEntity), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
-
 	}
 
 	@DeleteMapping(value = "delete/{id}")
 	@CrossOrigin
 	public ResponseEntity<Boolean> deleteUsuario(@PathVariable("id") Long id) {
-		Boolean resp = false;
-		usuarioService.deleteById(id);
-		resp = true;
+		
+		try {
+			Boolean resp = false;
+			usuarioService.deleteById(id);
+			resp = true;
 
-		return ResponseEntity.ok(resp);
+			return ResponseEntity.ok(resp);
+		}  catch (RestClientResponseException e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
 	}
 }

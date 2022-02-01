@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 import com.test.octans.dto.RolDto;
 import com.test.octans.entity.RolEntity;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel="spring")
 public interface RolMapper {
 	
 	@Mapping(source = "idRol", target = "idRol")
