@@ -24,7 +24,7 @@ public class RolController {
 
 	@Autowired
 	private RolService rolService;
-	
+
 	@Autowired
 	private RolMapper rolMapper;
 
@@ -32,9 +32,9 @@ public class RolController {
 	@CrossOrigin
 	public ResponseEntity<List<RolEntity>> getAllRoles() {
 		try {
-			return ResponseEntity.ok(rolService.findAll());
+			return new ResponseEntity<>(rolService.findAll(), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -42,12 +42,12 @@ public class RolController {
 	@CrossOrigin
 	public ResponseEntity<RolEntity> saveUsuario(@RequestBody RolDto rol) {
 		try {
-			
+
 			RolEntity rolEntity = rolMapper.toRolEntity(rol);
-			
+
 			return new ResponseEntity<>(rolService.save(rolEntity), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 }

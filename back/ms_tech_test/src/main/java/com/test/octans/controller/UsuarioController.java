@@ -26,7 +26,7 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
 	@Autowired
 	private UsuarioMapper usuarioMapper;
 
@@ -34,9 +34,9 @@ public class UsuarioController {
 	@CrossOrigin
 	public ResponseEntity<List<UsuarioEntity>> getAllUsuarios() {
 		try {
-			return ResponseEntity.ok(usuarioService.findAll());
+			return new ResponseEntity<>(usuarioService.findAll(), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -47,22 +47,20 @@ public class UsuarioController {
 			UsuarioEntity usuarioEntity = usuarioMapper.toUsuarioEntity(usuario);
 			return new ResponseEntity<>(usuarioService.save(usuarioEntity), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@DeleteMapping(value = "delete/{id}")
 	@CrossOrigin
 	public ResponseEntity<Boolean> deleteUsuario(@PathVariable("id") Long id) {
-		
-		try {
-			Boolean resp = false;
-			usuarioService.deleteById(id);
-			resp = true;
 
-			return ResponseEntity.ok(resp);
-		}  catch (RestClientResponseException e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		try {
+			usuarioService.deleteById(id);
+
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (RestClientResponseException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 }
