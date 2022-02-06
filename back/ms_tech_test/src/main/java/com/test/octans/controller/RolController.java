@@ -18,6 +18,9 @@ import com.test.octans.entity.RolEntity;
 import com.test.octans.mapper.RolMapper;
 import com.test.octans.service.RolService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+
 @RestController
 @RequestMapping("/roles/")
 public class RolController {
@@ -29,25 +32,29 @@ public class RolController {
 	private RolMapper rolMapper;
 
 	@GetMapping("consultar")
+	@ApiOperation("Consultar todos los roles")
+	@ApiResponse(code = 200, message = "OK")
 	@CrossOrigin
 	public ResponseEntity<List<RolEntity>> getAllRoles() {
 		try {
 			return new ResponseEntity<>(rolService.findAll(), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 
 	@PostMapping("guardar")
+	@ApiOperation("Guardar una entidad tipo rol")
+	@ApiResponse(code = 200, message = "OK")
 	@CrossOrigin
-	public ResponseEntity<RolEntity> saveUsuario(@RequestBody RolDto rol) {
+	public ResponseEntity<RolEntity> saveRol(@RequestBody RolDto rol) {
 		try {
 
 			RolEntity rolEntity = rolMapper.toRolEntity(rol);
 
 			return new ResponseEntity<>(rolService.save(rolEntity), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 }

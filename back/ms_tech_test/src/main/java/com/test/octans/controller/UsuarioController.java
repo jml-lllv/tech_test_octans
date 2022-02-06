@@ -20,6 +20,9 @@ import com.test.octans.entity.UsuarioEntity;
 import com.test.octans.mapper.UsuarioMapper;
 import com.test.octans.service.UsuarioService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+
 @RestController
 @RequestMapping("/usuario/")
 public class UsuarioController {
@@ -31,27 +34,33 @@ public class UsuarioController {
 	private UsuarioMapper usuarioMapper;
 
 	@GetMapping("consultar")
+	@ApiOperation("Consultar todos los usuarios")
+	@ApiResponse(code = 200, message = "OK")
 	@CrossOrigin
 	public ResponseEntity<List<UsuarioEntity>> getAllUsuarios() {
 		try {
 			return new ResponseEntity<>(usuarioService.findAll(), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 
 	@PostMapping("guardar")
+	@ApiOperation("Guardar una entidad tipo usuario")
+	@ApiResponse(code = 200, message = "OK")
 	@CrossOrigin
 	public ResponseEntity<UsuarioEntity> saveUsuario(@RequestBody UsuarioDto usuario) {
 		try {
 			UsuarioEntity usuarioEntity = usuarioMapper.toUsuarioEntity(usuario);
 			return new ResponseEntity<>(usuarioService.save(usuarioEntity), HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 
 	@DeleteMapping(value = "delete/{id}")
+	@ApiOperation("Eliminar un usuario por su Id")
+	@ApiResponse(code = 200, message = "OK")
 	@CrossOrigin
 	public ResponseEntity<Boolean> deleteUsuario(@PathVariable("id") Long id) {
 
@@ -60,7 +69,7 @@ public class UsuarioController {
 
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (RestClientResponseException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 }
